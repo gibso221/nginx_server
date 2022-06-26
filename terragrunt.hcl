@@ -8,8 +8,6 @@ locals {
   account_id = get_env("TESTING_ACCOUNT_ID","")
   bucket_key = "${local.region}/${local.environment_name}"
   bucket_name = "${local.environment_name}-${local.account_id}-tf-state"
-  vpc_cidr = local.region_vars.locals.vpc_cidr
-  subnet_ranges = local.region_vars.locals.subnet_ranges
 }
 
 remote_state {
@@ -22,3 +20,8 @@ remote_state {
     dynamodb_table = "terraform-locking"
   }
 }
+
+# get all region-specific variables
+inputs = merge(
+local.region_vars.locals
+)

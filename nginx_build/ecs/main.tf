@@ -2,6 +2,7 @@ locals {
   container_name = "nginx"
   container_port = 80
   host_port      = 80
+  weights        = split(":", var.fargate_to_spot_ratio)
 }
 
 # Send logs to CloudWatch using logDriver for better monitoring
@@ -52,12 +53,12 @@ resource "aws_ecs_cluster_capacity_providers" "fargate_providers" {
 
   default_capacity_provider_strategy {
     base              = 1
-    weight            = 1
+    weight            = local.weights[0]
     capacity_provider = "FARGATE"
   }
 
   default_capacity_provider_strategy {
-    weight            = 1
+    weight            = local.weights[1]
     capacity_provider = "FARGATE_SPOT"
   }
 }

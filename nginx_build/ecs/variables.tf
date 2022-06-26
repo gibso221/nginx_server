@@ -17,3 +17,21 @@ variable "vpc_id" {
 variable "alb_sg_id" {
   type = string
 }
+variable "min_capacity" {
+  type = number
+}
+variable "max_capacity" {
+  type = number
+}
+variable "scale_in_cooldown_seconds" {
+  type = number
+}
+variable "scale_out_cooldown_seconds" {
+  type = number
+}
+variable "cpu_target_percent" {
+  type = number
+}
+variable "fargate_to_spot_ratio" {
+  type = string
+}
