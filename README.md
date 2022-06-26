@@ -10,8 +10,9 @@ Terragrunt v0.38.1
 
 
 ## Configuring
-1. Navigate to the required region folder `eu-west-1` and/or `ap-southeast-2`
-2. Set region-specific variables for any of the following. Note that `region` and `bucket_region` shouldn't be changed.
+1. Set the `TESTING_ACCOUNT_ID` environment variable to the target AWS account ID. Ensure sufficient IAM permissions for the default AWS profile.
+2. Navigate to the required region folder `eu-west-1` and/or `ap-southeast-2`
+3. Set region-specific variables for any of the following. Note that `region` and `bucket_region` shouldn't be changed.
 ```
 vpc_cidr      (VPC CIDR range)
 subnet_ranges (number of subnets)
